@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GravityFlip : MonoBehaviour {
 
+    bool upsideDown;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -13,13 +15,15 @@ public class GravityFlip : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Physics.gravity = new Vector3(0, 9.81f, 0);
-            StartCoroutine(Flip());
+            StartCoroutine(upsideDown ? Flip() : FlipRightSideUp());
+            upsideDown = !upsideDown;
         }
     }
 
     IEnumerator Flip()
     {
+        Physics.gravity = new Vector3(0, 9.81f, 0);
+
         while (transform.eulerAngles.z < 180)
         {
             transform.eulerAngles += new Vector3(0, 0, 10);
@@ -27,6 +31,19 @@ public class GravityFlip : MonoBehaviour {
         }
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 180);
+    }
+
+    IEnumerator FlipRightSideUp()
+    {
+        Physics.gravity = new Vector3(0, -9.81f, 0);
+
+        while (transform.eulerAngles.z > 10)
+        {
+            transform.eulerAngles += new Vector3(0, 0, -10);
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
     }
 
 }
