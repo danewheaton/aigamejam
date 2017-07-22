@@ -25,7 +25,7 @@ public class P_Controller : MonoBehaviour
         myRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         // this script is a simple, general purpose convenience script, and its most frustrating bug is in how its rigidbody behaves when it brushes up against something (it spins a little). to alleviate this quirk, the angular drag is set to 0
-        myRigidbody.angularDrag = 0;
+        myRigidbody.angularDrag = 5;
 
         // the cursor is annoying. to get it back in play mode, press esc (it'll still be invisible until you move it off the game screen)
         Cursor.visible = false;
