@@ -15,7 +15,7 @@ public class GravityFlip : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(upsideDown ? Flip() : FlipRightSideUp());
+            StartCoroutine(upsideDown ? FlipRightSideUp() : Flip());
             upsideDown = !upsideDown;
         }
     }
