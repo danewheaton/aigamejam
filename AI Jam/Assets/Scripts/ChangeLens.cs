@@ -42,7 +42,6 @@ public class ChangeLens : MonoBehaviour {
                     cLens = LensStates.R;
                     pill.enabled = false;
                     cube1.enabled = false;
-
                     break;
             }
 
